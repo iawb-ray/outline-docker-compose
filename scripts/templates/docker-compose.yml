@@ -85,6 +85,9 @@ services:
       - wk-oidc-server
     networks:
       - ${NETWORKS}
+    labels:
+      caddy: outline.hxdcloud.com
+      caddy.reverse_proxy: "{{upstreams ${HTTP_PORT_IP}}}"
 networks:
   ${NETWORKS}:
     external: ${NETWORKS_EXTERNAL}
