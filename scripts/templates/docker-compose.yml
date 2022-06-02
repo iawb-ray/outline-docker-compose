@@ -73,8 +73,6 @@ services:
       - ${NETWORKS}
   wk-nginx:
     image: nginx
-    ports:
-      - ${HTTP_IP}:${HTTP_PORT_IP}:80
     volumes:
       - ./config/nginx/:/etc/nginx/conf.d/:ro
       - ./data/uc/static_root:/uc/static_root:ro
@@ -87,7 +85,7 @@ services:
       - ${NETWORKS}
     labels:
       caddy: outline.hxdcloud.com
-      caddy.reverse_proxy: "{{upstreams ${HTTP_PORT_IP}}}"
+      caddy.reverse_proxy: "{{upstreams 80}}"
 networks:
   ${NETWORKS}:
-    external: ${NETWORKS_EXTERNAL}
+    external: true
