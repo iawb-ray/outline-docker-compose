@@ -16,17 +16,17 @@ services:
     restart: always
     networks:
       - ${NETWORKS}
-  wk-minio:
-    image: minio/minio:latest
-    volumes:
-      - ./data/minio_root:/minio_root:z
-      - ./data/certs:/root/.minio/certs:z
-    command: "minio server /minio_root"
-    env_file:
-      - ./env.minio
-    restart: always
-    networks:
-      - ${NETWORKS}
+#   wk-minio:
+#     image: minio/minio:latest
+#     volumes:
+#       - ./data/minio_root:/minio_root:z
+#       - ./data/certs:/root/.minio/certs:z
+#     command: "minio server /minio_root"
+#     env_file:
+#       - ./env.minio
+#     restart: always
+#     networks:
+#       - ${NETWORKS}
   wk-createbuckets:
     image: minio/mc
     depends_on:
