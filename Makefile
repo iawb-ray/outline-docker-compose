@@ -5,6 +5,7 @@ gen-conf:
 
 start:
 	docker-compose up -d
+	docker restart caddy
 
 install: gen-conf start
 	docker-compose exec ${oidc_server_container} bash -c "make init"
